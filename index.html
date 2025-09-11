@@ -12,11 +12,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+       
         html {
             scroll-behavior: smooth;
         }
-        
+       
         body {
             font-family: 'Montserrat', sans-serif;
             background: #f8f6f0;
@@ -25,11 +25,11 @@
             overflow-x: hidden;
             transition: background 1.2s ease;
         }
-        
+       
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
         }
-        
+       
         /* Header Styles */
         header {
             background-color: transparent;
@@ -41,13 +41,13 @@
             z-index: 1000;
             transition: all 0.6s ease;
         }
-        
+       
         header.scrolled {
             background-color: rgba(255, 255, 255, 0.98);
             padding: 15px 0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
-        
+       
         .header-content {
             display: flex;
             align-items: center;
@@ -56,43 +56,45 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+       
         .logo {
             display: flex;
             align-items: center;
         }
-        
+       
         .logo-icon {
             font-size: 36px;
             color: #d4af37;
             margin-right: 10px;
             transition: all 0.4s ease;
         }
-        
+       
         header.scrolled .logo-icon {
             font-size: 28px;
         }
-        
+       
         .logo-text {
             font-size: 28px;
             font-weight: bold;
             color: #2a9d8f;
             transition: all 0.4s ease;
         }
-        
+       
         header.scrolled .logo-text {
             font-size: 22px;
         }
-        
+       
         nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
-        
+       
         nav ul li {
             margin-left: 25px;
+            position: relative;
         }
-        
+       
         nav ul li a {
             text-decoration: none;
             color: #2a9d8f;
@@ -100,7 +102,7 @@
             transition: color 0.3s;
             position: relative;
         }
-        
+       
         nav ul li a:after {
             content: '';
             position: absolute;
@@ -111,18 +113,85 @@
             background-color: #d4af37;
             transition: width 0.3s;
         }
-        
+       
         nav ul li a:hover:after {
             width: 100%;
         }
-        
+       
         nav ul li a:hover {
             color: #d4af37;
         }
         
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .language-current {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background: rgba(42, 157, 143, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .language-current:hover {
+            background: rgba(42, 157, 143, 0.2);
+        }
+        
+        .language-current i {
+            margin-right: 8px;
+            color: #2a9d8f;
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 180px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .language-selector:hover .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .language-option {
+            padding: 12px 15px;
+            display: block;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .language-option:last-child {
+            border-bottom: none;
+        }
+        
+        .language-option:hover {
+            background: #f8f6f0;
+            color: #2a9d8f;
+        }
+        
+        header.scrolled .language-current {
+            background: rgba(42, 157, 143, 0.05);
+        }
+       
         /* Section Common Styles */
         section {
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
             display: flex;
             align-items: center;
@@ -130,42 +199,43 @@
             position: relative;
             overflow: hidden;
             transition: transform 1.2s ease, opacity 1.2s ease;
+            padding: 80px 0;
         }
-        
+       
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
                         url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%232a9d8f" opacity="0.1" width="100" height="100"/></svg>');
             text-align: center;
             padding: 0 20px;
         }
-        
+       
         .hero-content {
             max-width: 800px;
             opacity: 0;
             transform: translateY(50px);
             transition: all 1.2s ease 0.3s;
         }
-        
+       
         .hero-content.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
+       
         .hero h1 {
             font-size: 4.5rem;
             color: #2a9d8f;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+       
         .hero p {
             font-size: 1.8rem;
             color: #d4af37;
             font-weight: 300;
             margin-bottom: 40px;
         }
-        
+       
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -177,11 +247,11 @@
             opacity: 0;
             transition: opacity 1s ease 1.5s;
         }
-        
+       
         .scroll-down.active {
             opacity: 1;
         }
-        
+       
         /* About Section */
         .about {
             background-color: #fff;
@@ -189,12 +259,12 @@
             transform: translateY(50px);
             opacity: 0;
         }
-        
+       
         .about.active {
             transform: translateY(0);
             opacity: 1;
         }
-        
+       
         .about-container {
             display: flex;
             align-items: center;
@@ -204,32 +274,32 @@
             height: 100%;
             gap: 50px;
         }
-        
+       
         .about-text {
             flex: 1;
             opacity: 0;
             transform: translateX(-50px);
             transition: all 1s ease;
         }
-        
+       
         .about-text.active {
             opacity: 1;
             transform: translateX(0);
         }
-        
+       
         .about-text h2 {
             font-size: 3rem;
             color: #2a9d8f;
             margin-bottom: 30px;
         }
-        
+       
         .about-text p {
             font-size: 1.2rem;
             margin-bottom: 20px;
             color: #555;
             line-height: 1.8;
         }
-        
+       
         .about-images {
             flex: 1;
             height: 80%;
@@ -241,12 +311,12 @@
             transform: translateX(50px) scale(0.9);
             transition: all 1s ease 0.5s;
         }
-        
+       
         .about-images.active {
             opacity: 1;
             transform: translateX(0) scale(1);
         }
-        
+       
         .about-image {
             position: absolute;
             width: 100%;
@@ -257,11 +327,11 @@
             transition: opacity 1s ease;
             border-radius: 20px;
         }
-        
+       
         .about-image.active {
             opacity: 1;
         }
-        
+       
         /* Contact Section */
         .contact {
             background: linear-gradient(to bottom, #2a9d8f, #1d7a6e);
@@ -269,37 +339,42 @@
             text-align: center;
             transform: translateY(50px);
             opacity: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
-        
+       
         .contact.active {
             transform: translateY(0);
             opacity: 1;
         }
-        
+       
         .contact-content {
             max-width: 1000px;
             opacity: 0;
             transform: translateY(100px);
             transition: all 1s ease;
+            width: 100%;
+            padding: 40px 20px;
         }
-        
+       
         .contact-content.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
+       
         .contact h2 {
             font-size: 3.5rem;
             margin-bottom: 60px;
         }
-        
+       
         .contact-options {
             display: flex;
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
         }
-        
+       
         .contact-card {
             background-color: #fff;
             color: #2a9d8f;
@@ -312,45 +387,45 @@
             transform: translateY(50px) scale(0.9);
             transition: all 0.6s ease;
         }
-        
+       
         .contact-card:nth-child(1) {
             transition-delay: 0.2s;
         }
-        
+       
         .contact-card:nth-child(2) {
             transition-delay: 0.4s;
         }
-        
+       
         .contact-card:nth-child(3) {
             transition-delay: 0.6s;
         }
-        
+       
         .contact-content.active .contact-card {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-        
+       
         .contact-card:hover {
             transform: translateY(-15px) scale(1.05);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
-        
+       
         .contact-icon {
             font-size: 50px;
             margin-bottom: 25px;
             color: #d4af37;
         }
-        
+       
         .contact-card h3 {
             margin-bottom: 20px;
             font-size: 1.8rem;
         }
-        
+       
         .contact-card p {
             margin-bottom: 25px;
             font-size: 1.1rem;
         }
-        
+       
         .btn {
             display: inline-block;
             background-color: #d4af37;
@@ -362,12 +437,12 @@
             transition: all 0.3s;
             border: 2px solid #d4af37;
         }
-        
+       
         .btn:hover {
             background-color: transparent;
             color: #d4af37;
         }
-        
+       
         /* Footer */
         footer {
             background-color: #1d7a6e;
@@ -375,7 +450,7 @@
             padding: 40px 0;
             text-align: center;
         }
-        
+       
         .footer-content {
             display: flex;
             justify-content: space-between;
@@ -384,18 +459,18 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+       
         .social-icons a {
             color: #fff;
             font-size: 28px;
             margin-left: 20px;
             transition: color 0.3s;
         }
-        
+       
         .social-icons a:hover {
             color: #d4af37;
         }
-        
+       
         /* Animations */
         @keyframes fadeUp {
             from {
@@ -407,7 +482,7 @@
                 transform: translateY(0);
             }
         }
-        
+       
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0) translateX(-50%);
@@ -419,104 +494,154 @@
                 transform: translateY(-10px) translateX(-50%);
             }
         }
-        
+       
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 3.5rem;
             }
-            
+           
             .hero p {
                 font-size: 1.5rem;
             }
-            
+           
             .about-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 30px;
             }
-            
+           
             .about-images {
                 width: 100%;
                 height: 50%;
             }
-            
+           
             .about-text h2 {
                 font-size: 2.5rem;
             }
+            
+            .contact h2 {
+                font-size: 2.8rem;
+                margin-bottom: 40px;
+            }
         }
-        
+       
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
             }
-            
+           
             nav ul {
                 margin-top: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            
+           
             nav ul li {
                 margin: 5px 10px;
             }
-            
+           
             .hero h1 {
                 font-size: 2.8rem;
             }
-            
+           
             .hero p {
                 font-size: 1.3rem;
             }
-            
+           
             .about-text h2 {
                 font-size: 2.2rem;
             }
-            
+           
             .contact-options {
                 flex-direction: column;
                 align-items: center;
+                gap: 25px;
             }
-            
+           
             .contact-card {
                 width: 100%;
                 max-width: 350px;
+                padding: 30px 20px;
             }
             
+            .contact-icon {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+            
+            .contact-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .contact-card p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+           
             .footer-content {
                 flex-direction: column;
                 gap: 20px;
             }
-            
+           
             .social-icons {
                 margin-top: 15px;
             }
-            
+           
             .social-icons a {
                 margin: 0 10px;
             }
+            
+            .language-dropdown {
+                left: 0;
+                right: auto;
+            }
         }
-        
+       
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
+           
             .hero p {
                 font-size: 1.1rem;
             }
-            
+           
             .about-text h2 {
                 font-size: 1.8rem;
             }
-            
+           
             .about-text p {
                 font-size: 1rem;
             }
-            
+           
             .contact h2 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 30px;
+            }
+            
+            .contact-card {
+                padding: 25px 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+            }
+            
+            .language-selector {
+                margin-top: 10px;
             }
         }
     </style>
@@ -536,10 +661,22 @@
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li class="language-selector">
+                        <div class="language-current">
+                            <i class="fas fa-globe"></i> EN
+                        </div>
+                        <div class="language-dropdown">
+                            <a href="#" class="language-option" data-lang="en">English</a>
+                            <a href="#" class="language-option" data-lang="vi">Tiếng Việt</a>
+                            <a href="#" class="language-option" data-lang="zh-CN">中文 (Simplified)</a>
+                            <a href="#" class="language-option" data-lang="zh-TW">中文 (Traditional)</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -551,6 +688,7 @@
             <i class="fas fa-chevron-down"></i>
         </a>
     </section>
+
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -570,6 +708,7 @@
         </div>
     </section>
 
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -584,7 +723,7 @@
                         <p>Speak directly with our durian experts</p>
                         <a href="tel:+1234567890" class="btn">Call Now</a>
                     </div>
-                    
+                   
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
@@ -593,7 +732,7 @@
                         <p>Get detailed information and quotes</p>
                         <a href="mailto:info@thanhphatdurian.com" class="btn">Send Email</a>
                     </div>
-                    
+                   
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-calendar-alt"></i>
@@ -606,6 +745,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer>
@@ -621,6 +761,7 @@
         </div>
     </footer>
 
+
     <script>
         // Header scroll effect
         window.addEventListener('scroll', function() {
@@ -630,25 +771,25 @@
             } else {
                 header.classList.remove('scrolled');
             }
-            
+           
             // Update body background based on scroll position
             updateBackground();
         });
-        
+       
         // Function to update body background based on scroll position
         function updateBackground() {
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
             const documentHeight = document.body.scrollHeight - windowHeight;
             const scrollPercent = scrollPosition / documentHeight;
-            
+           
             // Define color stops for background transition
             const heroColor = [248, 246, 240]; // #f8f6f0
             const aboutColor = [255, 255, 255]; // #ffffff
             const contactColor = [42, 157, 143]; // #2a9d8f
-            
+           
             let r, g, b;
-            
+           
             if (scrollPercent < 0.5) {
                 // Transition from hero to about
                 const progress = scrollPercent * 2; // 0 to 1
@@ -662,10 +803,10 @@
                 g = aboutColor[1] + (contactColor[1] - aboutColor[1]) * progress;
                 b = aboutColor[2] + (contactColor[2] - aboutColor[2]) * progress;
             }
-            
+           
             document.body.style.background = `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
         }
-        
+       
         // Intersection Observer for scroll animations
         const sections = document.querySelectorAll('section');
         const heroContent = document.querySelector('.hero-content');
@@ -674,12 +815,12 @@
         const aboutImages = document.querySelector('.about-images');
         const contactContent = document.querySelector('.contact-content');
         const contactCards = document.querySelectorAll('.contact-card');
-        
+       
         const observerOptions = {
             threshold: 0.3,
             rootMargin: '0px 0px -100px 0px'
         };
-        
+       
         const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -712,28 +853,28 @@
                 }
             });
         }, observerOptions);
-        
+       
         sections.forEach(section => {
             observer.observe(section);
         });
-        
+       
         // Image playback effect for about section
         const aboutImageElements = document.querySelectorAll('.about-image');
         let currentImageIndex = 0;
         let lastScrollPosition = 0;
         let imageChangeThreshold = 150; // pixels to scroll before changing image
-        
+       
         function updateAboutImages(scrollPos) {
             // Calculate which image should be shown based on scroll position
             const aboutSection = document.getElementById('about');
             const sectionTop = aboutSection.offsetTop;
             const sectionHeight = aboutSection.offsetHeight;
-            
+           
             // Only run if we're in the about section
             if (scrollPos >= sectionTop && scrollPos <= sectionTop + sectionHeight) {
                 const scrollProgress = (scrollPos - sectionTop) / sectionHeight;
                 const imageIndex = Math.min(aboutImageElements.length - 1, Math.floor(scrollProgress * aboutImageElements.length));
-                
+               
                 // Only update if the index has changed
                 if (imageIndex !== currentImageIndex) {
                     aboutImageElements[currentImageIndex].classList.remove('active');
@@ -742,29 +883,67 @@
                 }
             }
         }
-        
+       
         // Throttle scroll events for better performance
         let ticking = false;
         window.addEventListener('scroll', function() {
             const currentScrollPosition = window.pageYOffset;
-            
+           
             if (!ticking) {
                 window.requestAnimationFrame(function() {
                     updateAboutImages(currentScrollPosition);
                     ticking = false;
                 });
-                
+               
                 ticking = true;
             }
-            
+           
             lastScrollPosition = currentScrollPosition;
         });
-        
+       
         // Initialize the first image as active
         aboutImageElements[0].classList.add('active');
-        
+       
         // Initialize body background
         updateBackground();
+        
+        // Language selector functionality
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                const text = this.textContent;
+                
+                // Update the current language display
+                document.querySelector('.language-current').innerHTML = 
+                    `<i class="fas fa-globe"></i> ${text.substr(0, 2).toUpperCase()}`;
+                
+                // Close the dropdown on mobile
+                if (window.innerWidth < 768) {
+                    document.querySelector('.language-dropdown').style.display = 'none';
+                }
+                
+                // Here you would typically load the language file or update content
+                console.log(`Language changed to: ${lang}`);
+                
+                // For now, we'll just show an alert
+                alert(`Language changed to: ${text}`);
+            });
+        });
+        
+        // Mobile language dropdown toggle
+        if (window.innerWidth < 768) {
+            document.querySelector('.language-current').addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdown = document.querySelector('.language-dropdown');
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                } else {
+                    dropdown.style.display = 'block';
+                }
+            });
+        }
     </script>
 </body>
 </html>
+
