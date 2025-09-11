@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Phat - Premium Durian Distributors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f8f6f0;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 1.2s ease;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: transparent;
+            padding: 25px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.6s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 36px;
+            color: #d4af37;
+            margin-right: 10px;
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled .logo-icon {
+            font-size: 28px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2a9d8f;
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled .logo-text {
+            font-size: 22px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #2a9d8f;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #d4af37;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+        
+        /* Section Common Styles */
+        section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 1.2s ease, opacity 1.2s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%232a9d8f" opacity="0.1" width="100" height="100"/></svg>');
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.2s ease 0.3s;
+        }
+        
+        .hero-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            color: #2a9d8f;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.8rem;
+            color: #d4af37;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #2a9d8f;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            opacity: 0;
+            transition: opacity 1s ease 1.5s;
+        }
+        
+        .scroll-down.active {
+            opacity: 1;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: #fff;
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .about.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s ease;
+        }
+        
+        .about-text.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .about-text h2 {
+            font-size: 3rem;
+            color: #2a9d8f;
+            margin-bottom: 30px;
+        }
+        
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .about-images {
+            flex: 1;
+            height: 80%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateX(50px) scale(0.9);
+            transition: all 1s ease 0.5s;
+        }
+        
+        .about-images.active {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+        
+        .about-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            border-radius: 20px;
+        }
+        
+        .about-image.active {
+            opacity: 1;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(to bottom, #2a9d8f, #1d7a6e);
+            color: #fff;
+            text-align: center;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .contact.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .contact-content {
+            max-width: 1000px;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s ease;
+        }
+        
+        .contact-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact h2 {
+            font-size: 3.5rem;
+            margin-bottom: 60px;
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-card {
+            background-color: #fff;
+            color: #2a9d8f;
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 280px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 0.6s ease;
+        }
+        
+        .contact-card:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        
+        .contact-card:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        
+        .contact-card:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+        
+        .contact-content.active .contact-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-icon {
+            font-size: 50px;
+            margin-bottom: 25px;
+            color: #d4af37;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-card p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #d4af37;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1d7a6e;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            font-size: 28px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #d4af37;
+        }
+        
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.5rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .about-images {
+                width: 100%;
+                height: 50%;
+            }
+            
+            .about-text h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .about-text h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .social-icons {
+                margin-top: 15px;
+            }
+            
+            .social-icons a {
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-text p {
+                font-size: 1rem;
+            }
+            
+            .contact h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cloud-meatball"></i>
+                </div>
+                <div class="logo-text">Thanh Phat</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Durian at Our Heart</h1>
+            <p>Premium quality durians, carefully selected and shipped with love</p>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Thanh Phat</h2>
+                <p>Thanh Phat is a premium durian distribution company with high standards, focusing on quality over quantity. We take pride in sourcing only the finest durians from trusted growers who share our passion for excellence.</p>
+                <p>Each durian is carefully selected, handled with utmost care, and shipped with love to ensure that you receive the perfect fruit every time. Our commitment to quality means we reject more durians than we accept, ensuring only the best reach our customers.</p>
+                <p>We believe that enjoying a durian should be a memorable experience, which is why we pay attention to every detail from tree to table.</p>
+            </div>
+            <div class="about-images">
+                <div class="about-image active" style="background-image: url('https://images.unsplash.com/photo-1597004719510-32b8f2e1a2d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1630365500745-ecdf59c8d5b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1630365500933-2152d4f5fbf2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1597004719510-32b8f2e1a2d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Connect With Us</h2>
+                <div class="contact-options">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>Speak directly with our durian experts</p>
+                        <a href="tel:+1234567890" class="btn">Call Now</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>Get detailed information and quotes</p>
+                        <a href="mailto:info@thanhphatdurian.com" class="btn">Send Email</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Schedule</h3>
+                        <p>Book a tasting session</p>
+                        <a href="#" class="btn">Schedule Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; 2023 Thanh Phat Durian. All rights reserved.</p>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Update body background based on scroll position
+            updateBackground();
+        });
+        
+        // Function to update body background based on scroll position
+        function updateBackground() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.body.scrollHeight - windowHeight;
+            const scrollPercent = scrollPosition / documentHeight;
+            
+            // Define color stops for background transition
+            const heroColor = [248, 246, 240]; // #f8f6f0
+            const aboutColor = [255, 255, 255]; // #ffffff
+            const contactColor = [42, 157, 143]; // #2a9d8f
+            
+            let r, g, b;
+            
+            if (scrollPercent < 0.5) {
+                // Transition from hero to about
+                const progress = scrollPercent * 2; // 0 to 1
+                r = heroColor[0] + (aboutColor[0] - heroColor[0]) * progress;
+                g = heroColor[1] + (aboutColor[1] - heroColor[1]) * progress;
+                b = heroColor[2] + (aboutColor[2] - heroColor[2]) * progress;
+            } else {
+                // Transition from about to contact
+                const progress = (scrollPercent - 0.5) * 2; // 0 to 1
+                r = aboutColor[0] + (contactColor[0] - aboutColor[0]) * progress;
+                g = aboutColor[1] + (contactColor[1] - aboutColor[1]) * progress;
+                b = aboutColor[2] + (contactColor[2] - aboutColor[2]) * progress;
+            }
+            
+            document.body.style.background = `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+        }
+        
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('section');
+        const heroContent = document.querySelector('.hero-content');
+        const scrollDown = document.querySelector('.scroll-down');
+        const aboutText = document.querySelector('.about-text');
+        const aboutImages = document.querySelector('.about-images');
+        const contactContent = document.querySelector('.contact-content');
+        const contactCards = document.querySelectorAll('.contact-card');
+        
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'hero') {
+                        heroContent.classList.add('active');
+                        scrollDown.classList.add('active');
+                        entry.target.classList.add('active');
+                    } else if (entry.target.id === 'about') {
+                        aboutText.classList.add('active');
+                        aboutImages.classList.add('active');
+                        entry.target.classList.add('active');
+                    } else if (entry.target.id === 'contact') {
+                        contactContent.classList.add('active');
+                        entry.target.classList.add('active');
+                    }
+                } else {
+                    // Remove the class when element is not in view for reverse animation
+                    if (entry.target.id === 'hero') {
+                        heroContent.classList.remove('active');
+                        scrollDown.classList.remove('active');
+                        entry.target.classList.remove('active');
+                    } else if (entry.target.id === 'about') {
+                        aboutText.classList.remove('active');
+                        aboutImages.classList.remove('active');
+                        entry.target.classList.remove('active');
+                    } else if (entry.target.id === 'contact') {
+                        contactContent.classList.remove('active');
+                        entry.target.classList.remove('active');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Image playback effect for about section
+        const aboutImageElements = document.querySelectorAll('.about-image');
+        let currentImageIndex = 0;
+        let lastScrollPosition = 0;
+        let imageChangeThreshold = 150; // pixels to scroll before changing image
+        
+        function updateAboutImages(scrollPos) {
+            // Calculate which image should be shown based on scroll position
+            const aboutSection = document.getElementById('about');
+            const sectionTop = aboutSection.offsetTop;
+            const sectionHeight = aboutSection.offsetHeight;
+            
+            // Only run if we're in the about section
+            if (scrollPos >= sectionTop && scrollPos <= sectionTop + sectionHeight) {
+                const scrollProgress = (scrollPos - sectionTop) / sectionHeight;
+                const imageIndex = Math.min(aboutImageElements.length - 1, Math.floor(scrollProgress * aboutImageElements.length));
+                
+                // Only update if the index has changed
+                if (imageIndex !== currentImageIndex) {
+                    aboutImageElements[currentImageIndex].classList.remove('active');
+                    aboutImageElements[imageIndex].classList.add('active');
+                    currentImageIndex = imageIndex;
+                }
+            }
+        }
+        
+        // Throttle scroll events for better performance
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            const currentScrollPosition = window.pageYOffset;
+            
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateAboutImages(currentScrollPosition);
+                    ticking = false;
+                });
+                
+                ticking = true;
+            }
+            
+            lastScrollPosition = currentScrollPosition;
+        });
+        
+        // Initialize the first image as active
+        aboutImageElements[0].classList.add('active');
+        
+        // Initialize body background
+        updateBackground();
+    </script>
+</body>
+</html>
