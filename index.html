@@ -88,10 +88,11 @@
             display: flex;
             list-style: none;
             align-items: center;
+            flex-wrap: wrap;
         }
        
         nav ul li {
-            margin-left: 25px;
+            margin-left: 15px;
             position: relative;
         }
        
@@ -101,6 +102,7 @@
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+            white-space: nowrap;
         }
        
         nav ul li a:after {
@@ -135,6 +137,7 @@
             border-radius: 4px;
             background: rgba(42, 157, 143, 0.1);
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         
         .language-current:hover {
@@ -471,6 +474,15 @@
             color: #d4af37;
         }
        
+        /* Translation transition */
+        .translatable {
+            transition: opacity 0.3s ease;
+        }
+        
+        .translating {
+            opacity: 0.5;
+        }
+       
         /* Animations */
         @keyframes fadeUp {
             from {
@@ -524,22 +536,39 @@
                 font-size: 2.8rem;
                 margin-bottom: 40px;
             }
+            
+            nav ul li {
+                margin-left: 12px;
+            }
+            
+            .language-current {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
         }
        
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
+                flex-direction: row;
                 text-align: center;
             }
            
             nav ul {
-                margin-top: 15px;
+                margin-top: 0;
                 flex-wrap: wrap;
                 justify-content: center;
             }
            
             nav ul li {
-                margin: 5px 10px;
+                margin: 5px 8px;
+            }
+            
+            .logo-text {
+                font-size: 22px;
+            }
+            
+            .logo-icon {
+                font-size: 28px;
             }
            
             .hero h1 {
@@ -603,6 +632,19 @@
                 left: 0;
                 right: auto;
             }
+            
+            /* Keep navigation horizontal on mobile */
+            nav ul {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
+            }
+            
+            nav ul li {
+                flex-shrink: 0;
+            }
         }
        
         @media (max-width: 480px) {
@@ -632,16 +674,23 @@
             }
             
             nav ul {
-                flex-direction: column;
-                align-items: center;
+                font-size: 0.9rem;
             }
             
             nav ul li {
-                margin: 8px 0;
+                margin: 5px 5px;
             }
             
             .language-selector {
-                margin-top: 10px;
+                margin-top: 0;
+            }
+            
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .logo-icon {
+                font-size: 24px;
             }
         }
     </style>
@@ -654,22 +703,22 @@
                 <div class="logo-icon">
                     <i class="fas fa-cloud-meatball"></i>
                 </div>
-                <div class="logo-text">Thanh Phat</div>
+                <div class="logo-text">Hung Phat</div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#hero" data-translate="nav_home">Home</a></li>
+                    <li><a href="#about" data-translate="nav_about">About</a></li>
+                    <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
                     <li class="language-selector">
                         <div class="language-current">
-                            <i class="fas fa-globe"></i> EN
+                            <i class="fas fa-globe"></i> <span class="lang-display">EN</span>
                         </div>
                         <div class="language-dropdown">
-                            <a href="#" class="language-option" data-lang="en">English</a>
-                            <a href="#" class="language-option" data-lang="vi">Tiếng Việt</a>
-                            <a href="#" class="language-option" data-lang="zh-CN">中文 (Simplified.)</a>
-                            <a href="#" class="language-option" data-lang="zh-TW">中文 (Traditional.)</a>
+                            <a href="#" class="language-option" data-lang="en" data-display="EN">English</a>
+                            <a href="#" class="language-option" data-lang="vi" data-display="VN">Tiếng Việt</a>
+                            <a href="#" class="language-option" data-lang="zh-CN" data-display="简体">中文 (Simplified)</a>
+                            <a href="#" class="language-option" data-lang="zh-TW" data-display="繁體">中文 (Traditional)</a>
                         </div>
                     </li>
                 </ul>
@@ -681,8 +730,8 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>Durian at Our Heart</h1>
-            <p>Premium quality durians, carefully selected and shipped with love</p>
+            <h1 class="translatable" data-translate="hero_title">Durian at Our Heart</h1>
+            <p class="translatable" data-translate="hero_subtitle">Premium quality durians, carefully selected and shipped with love</p>
         </div>
         <a href="#about" class="scroll-down">
             <i class="fas fa-chevron-down"></i>
@@ -694,10 +743,10 @@
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-text">
-                <h2>About Thanh Phat</h2>
-                <p>Thanh Phat is a premium durian distribution company with high standards, focusing on quality over quantity. We take pride in sourcing only the finest durians from trusted growers who share our passion for excellence.</p>
-                <p>Each durian is carefully selected, handled with utmost care, and shipped with love to ensure that you receive the perfect fruit every time. Our commitment to quality means we reject more durians than we accept, ensuring only the best reach our customers.</p>
-                <p>We believe that enjoying a durian should be a memorable experience, which is why we pay attention to every detail from tree to table.</p>
+                <h2 class="translatable" data-translate="about_title">About Hung Phat</h2>
+                <p class="translatable" data-translate="about_p1">Hung Phat is a premium durian distribution company with high standards, focusing on quality over quantity. We take pride in sourcing only the finest durians from trusted growers who share our passion for excellence.</p>
+                <p class="translatable" data-translate="about_p2">Each durian is carefully selected, handled with utmost care, and shipped with love to ensure that you receive the perfect fruit every time. Our commitment to quality means we reject more durians than we accept, ensuring only the best reach our customers.</p>
+                <p class="translatable" data-translate="about_p3">We believe that enjoying a durian should be a memorable experience, which is why we pay attention to every detail from tree to table.</p>
             </div>
             <div class="about-images">
                 <div class="about-image active" style="background-image: url('https://images.unsplash.com/photo-1597004719510-32b8f2e1a2d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
@@ -713,33 +762,33 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-content">
-                <h2>Connect With Us</h2>
+                <h2 class="translatable" data-translate="contact_title">Connect With Us</h2>
                 <div class="contact-options">
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <h3>Call Us</h3>
-                        <p>Speak directly with our durian experts</p>
-                        <a href="tel:+1234567890" class="btn">Call Now</a>
+                        <h3 class="translatable" data-translate="contact_call">Call Us</h3>
+                        <p class="translatable" data-translate="contact_call_desc">Speak directly with our durian experts</p>
+                        <a href="tel:+1234567890" class="btn translatable" data-translate="contact_call_btn">Call Now</a>
                     </div>
                    
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <h3>Email Us</h3>
-                        <p>Get detailed information and quotes</p>
-                        <a href="mailto:info@thanhphatdurian.com" class="btn">Send Email</a>
+                        <h3 class="translatable" data-translate="contact_email">Email Us</h3>
+                        <p class="translatable" data-translate="contact_email_desc">Get detailed information and quotes</p>
+                        <a href="mailto:info@thanhphatdurian.com" class="btn translatable" data-translate="contact_email_btn">Send Email</a>
                     </div>
                    
                     <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
-                        <h3>Schedule</h3>
-                        <p>Book a tasting session</p>
-                        <a href="#" class="btn">Schedule Now</a>
+                        <h3 class="translatable" data-translate="contact_schedule">Schedule</h3>
+                        <p class="translatable" data-translate="contact_schedule_desc">Book a tasting session</p>
+                        <a href="#" class="btn translatable" data-translate="contact_schedule_btn">Schedule Now</a>
                     </div>
                 </div>
             </div>
@@ -751,7 +800,7 @@
     <footer>
         <div class="footer-content">
             <div class="copyright">
-                <p>&copy; 2023 Thanh Phat Durian. All rights reserved.</p>
+                <p class="translatable" data-translate="footer_copyright">&copy; 2023 Thanh Phat Durian. All rights reserved.</p>
             </div>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook"></i></a>
@@ -906,35 +955,151 @@
        
         // Initialize body background
         updateBackground();
+        // Language translation functionality
+        const translations = {
+            'en': {
+                'nav_home': 'Home',
+                'nav_about': 'About',
+                'nav_contact': 'Contact',
+                'hero_title': 'Fruit at Our Heart',
+                'hero_subtitle': 'Premium quality fruits, carefully selected and shipped with love',
+                'about_title': 'About Hung Phat',
+                'about_p1': 'Hung Phat is a fruit distribution company with high standards, focusing on quality over quantity. We take pride in sourcing only the finest fruits from trusted growers who share our passion for excellence.',
+                'about_p2': 'Each fruit is carefully selected, handled with utmost care, and shipped with love to ensure that you receive the perfect product every time. Our commitment to quality means we reject more fruits than we accept, ensuring only the best reach our customers.',
+                'about_p3': 'We believe that enjoying fruit should be a memorable experience, which is why we pay attention to every detail from orchard to table.',
+                'contact_title': 'Connect With Us',
+                'contact_call': 'Call Us',
+                'contact_call_desc': 'Speak directly with our fruit experts',
+                'contact_call_btn': 'Call Now',
+                'contact_email': 'Email Us',
+                'contact_email_desc': 'Get detailed information and quotes',
+                'contact_email_btn': 'Send Email',
+                'contact_schedule': 'Schedule',
+                'contact_schedule_desc': 'Book a tasting session',
+                'contact_schedule_btn': 'Schedule Now',
+                'footer_copyright': '© 2025 Hung Phat Import and Export Fruit Company Limited. All rights reserved.'
+            },
+            'vi': {
+                'nav_home': 'Trang Chủ',
+                'nav_about': 'Giới Thiệu',
+                'nav_contact': 'Liên Hệ',
+                'hero_title': 'Tuyển chọn Trái Cây bằng cả con tim',
+                'hero_subtitle': 'Trái cây chất lượng cao, được chọn lọc kỹ lưỡng và vận chuyển bằng cả tấm lòng',
+                'about_title': 'Về Hưng Phát',
+                'about_p1': 'Hưng Phát là doanh nghiệp phân phối trái cây với tiêu chuẩn cao, tập trung vào chất lượng hơn số lượng. Chúng tôi tự hào chỉ chọn những trái cây tốt nhất từ những nhà vườn đáng tin cậy cùng chung đam mê về sự xuất sắc.',
+                'about_p2': 'Mỗi loại trái cây đều được chọn lọc cẩn thận, xử lý với sự chăm sóc tối đa và vận chuyển bằng cả tấm lòng để đảm bảo bạn nhận được sản phẩm hoàn hảo mỗi lần. Cam kết về chất lượng của chúng tôi có nghĩa là chúng tôi từ chối nhiều hơn là chấp nhận, đảm bảo chỉ những loại tốt nhất đến tay khách hàng.',
+                'about_p3': 'Chúng tôi tin rằng thưởng thức trái cây nên là một trải nghiệm đáng nhớ, đó là lý do chúng tôi chú ý đến từng chi tiết từ vườn cây đến bàn ăn.',
+                'contact_title': 'Kết Nối Với Chúng Tôi',
+                'contact_call': 'Gọi Cho Chúng Tôi',
+                'contact_call_desc': 'Nói chuyện trực tiếp với các chuyên gia trái cây của chúng tôi',
+                'contact_call_btn': 'Gọi Ngay',
+                'contact_email': 'Email Cho Chúng Tôi',
+                'contact_email_desc': 'Nhận thông tin chi tiết và báo giá',
+                'contact_email_btn': 'Gửi Email',
+                'contact_schedule': 'Lịch Hẹn',
+                'contact_schedule_desc': 'Đặt lịch nếm thử',
+                'contact_schedule_btn': 'Đặt Lịch Ngay',
+                'footer_copyright': '© 2025 Công Ty TNHH Xuất Nhập Khẩu Trái Cây Hưng Phát. Tất cả quyền được bảo lưu.'
+            },
+            'zh-CN': {
+                'nav_home': '首页',
+                'nav_about': '关于我们',
+                'nav_contact': '联系我们',
+                'hero_title': '用心做好水果',
+                'hero_subtitle': '优质水果，精挑细选，用心运送',
+                'about_title': '关于兴发',
+                'about_p1': '兴发是一家高标准的水果分销企业，注重质量而非数量。我们自豪地从值得信赖的种植者那里采购最好的水果，他们与我们分享对卓越的热情。',
+                'about_p2': '每个水果都经过精心挑选，以最大的关怀处理，并充满爱心地运送，确保您每次都能收到完美的产品。我们对质量的承诺意味着我们拒绝的水果比接受的更多，确保只有最好的水果才能到达客户手中。',
+                'about_p3': '我们相信享受水果应该是一种难忘的体验，这就是为什么我们关注从果园到餐桌的每一个细节。',
+                'contact_title': '联系我们',
+                'contact_call': '致电我们',
+                'contact_call_desc': '直接与我们的水果专家交谈',
+                'contact_call_btn': '立即致电',
+                'contact_email': '发送邮件',
+                'contact_email_desc': '获取详细信息和报价',
+                'contact_email_btn': '发送邮件',
+                'contact_schedule': '预约',
+                'contact_schedule_desc': '安排品尝会',
+                'contact_schedule_btn': '立即预约',
+                'footer_copyright': '© 2025 兴发进出口水果有限公司。保留所有权利。'
+            },
+            'zh-TW': {
+                'nav_home': '首頁',
+                'nav_about': '關於我們',
+                'nav_contact': '聯繫我們',
+                'hero_title': '用心做好水果',
+                'hero_subtitle': '優質水果，精挑細選，用心運送',
+                'about_title': '關於興發',
+                'about_p1': '興發是一家高標準的水果分銷企業，注重質量而非數量。我們自豪地從值得信賴的種植者那裡採購最好的水果，他們與我們分享對卓越的熱情。',
+                'about_p2': '每個水果都經過精心挑選，以最大的關懷處理，並充滿愛心地運送，確保您每次都能收到完美的產品。我們對質量的承諾意味著我們拒絕的水果比接受的更多，確保只有最好的水果才能到達客戶手中。',
+                'about_p3': '我們相信享受水果應該是一種難忘的體驗，這就是為什麼我們關注從果園到餐桌的每一個細節。',
+                'contact_title': '聯繫我們',
+                'contact_call': '致電我們',
+                'contact_call_desc': '直接與我們的水果專家交談',
+                'contact_call_btn': '立即致電',
+                'contact_email': '發送郵件',
+                'contact_email_desc': '獲取詳細信息和報價',
+                'contact_email_btn': '發送郵件',
+                'contact_schedule': '預約',
+                'contact_schedule_desc': '安排品嚐會',
+                'contact_schedule_btn': '立即預約',
+                'footer_copyright': '© 2025 興發進出口水果有限公司。保留所有權利。'
+            }
+        };
+
+
+        let currentLanguage = 'en';
         
         // Language selector functionality
         document.querySelectorAll('.language-option').forEach(option => {
             option.addEventListener('click', function(e) {
                 e.preventDefault();
                 const lang = this.getAttribute('data-lang');
-                const text = this.textContent;
+                const displayText = this.getAttribute('data-display');
                 
                 // Update the current language display
-                document.querySelector('.language-current').innerHTML = 
-                    `<i class="fas fa-globe"></i> ${text.substr(0, 2).toUpperCase()}`;
+                document.querySelector('.lang-display').textContent = displayText;
                 
-                // Close the dropdown on mobile
-                if (window.innerWidth < 768) {
-                    document.querySelector('.language-dropdown').style.display = 'none';
-                }
-                
-                // Here you would typically load the language file or update content
-                console.log(`Language changed to: ${lang}`);
-                
-                // For now, we'll just show an alert
-                alert(`Language changed to: ${text}`);
+                // Change language with smooth transition
+                changeLanguage(lang);
             });
         });
+        
+        // Function to change language with smooth transition
+        function changeLanguage(lang) {
+            // Add translating class for transition effect
+            const translatableElements = document.querySelectorAll('.translatable');
+            translatableElements.forEach(el => {
+                el.classList.add('translating');
+            });
+            
+            // Change language after a short delay for transition effect
+            setTimeout(() => {
+                currentLanguage = lang;
+                
+                // Update all translatable elements
+                translatableElements.forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+                
+                // Remove translating class after content is updated
+                setTimeout(() => {
+                    translatableElements.forEach(el => {
+                        el.classList.remove('translating');
+                    });
+                }, 50);
+                
+            }, 300);
+        }
         
         // Mobile language dropdown toggle
         if (window.innerWidth < 768) {
             document.querySelector('.language-current').addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 const dropdown = document.querySelector('.language-dropdown');
                 if (dropdown.style.display === 'block') {
                     dropdown.style.display = 'none';
@@ -942,8 +1107,14 @@
                     dropdown.style.display = 'block';
                 }
             });
+            
+            // Close dropdown when clicking elsewhere
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.language-selector')) {
+                    document.querySelector('.language-dropdown').style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
 </html>
-
