@@ -3,1118 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanh Phat - Premium Durian Distributors</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Happy 2nd Anniversary!</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
         }
-       
-        html {
-            scroll-behavior: smooth;
-        }
-       
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: #f8f6f0;
-            color: #333;
-            line-height: 1.6;
+            background-color: #000;
+            color: #fff;
             overflow-x: hidden;
-            transition: background 1.2s ease;
+            transition: background-color 3s ease;
         }
-       
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
         }
-       
-        /* Header Styles */
-        header {
-            background-color: transparent;
-            padding: 25px 0;
+
+        /* Initial dark state */
+        .initial-dark {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
-            transition: all 0.6s ease;
+            height: 100%;
+            background-color: #000;
+            z-index: 100;
+            transition: opacity 3s ease;
         }
-       
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            padding: 15px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-       
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-       
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-       
-        .logo-icon {
-            font-size: 36px;
-            color: #d4af37;
-            margin-right: 10px;
-            transition: all 0.4s ease;
-        }
-       
-        header.scrolled .logo-icon {
-            font-size: 28px;
-        }
-       
-        .logo-text {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2a9d8f;
-            transition: all 0.4s ease;
-        }
-       
-        header.scrolled .logo-text {
-            font-size: 22px;
-        }
-       
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-       
-        nav ul li {
-            margin-left: 15px;
-            position: relative;
-        }
-       
-        nav ul li a {
-            text-decoration: none;
-            color: #2a9d8f;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-            white-space: nowrap;
-        }
-       
-        nav ul li a:after {
-            content: '';
+
+        /* Message styling */
+        .message {
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #d4af37;
-            transition: width 0.3s;
-        }
-       
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-       
-        nav ul li a:hover {
-            color: #d4af37;
-        }
-        
-        /* Language Selector */
-        .language-selector {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .language-current {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            border-radius: 4px;
-            background: rgba(42, 157, 143, 0.1);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        
-        .language-current:hover {
-            background: rgba(42, 157, 143, 0.2);
-        }
-        
-        .language-current i {
-            margin-right: 8px;
-            color: #2a9d8f;
-        }
-        
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 180px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
+            transition: opacity 2s ease;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+            max-width: 90%;
         }
-        
-        .language-selector:hover .language-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+
+        .message-1 {
+            color: #ffb6c1;
         }
-        
-        .language-option {
-            padding: 12px 15px;
-            display: block;
-            color: #333;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid #f0f0f0;
+
+        .message-2 {
+            color: #ff69b4;
         }
-        
-        .language-option:last-child {
-            border-bottom: none;
+
+        .message-3 {
+            color: #ff1493;
+            font-size: 3rem;
         }
-        
-        .language-option:hover {
-            background: #f8f6f0;
-            color: #2a9d8f;
+
+        .message-4 {
+            color: #ff69b4;
+            font-size: 2.8rem;
+            line-height: 1.4;
         }
-        
-        header.scrolled .language-current {
-            background: rgba(42, 157, 143, 0.05);
-        }
-       
-        /* Section Common Styles */
-        section {
-            min-height: 100vh;
+
+        /* Final celebration section */
+        .celebration {
+            display: none;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffcce6, #ffb3d9, #ff99cc);
+            padding: 40px 20px;
             position: relative;
             overflow: hidden;
-            transition: transform 1.2s ease, opacity 1.2s ease;
-            padding: 80px 0;
         }
-       
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%232a9d8f" opacity="0.1" width="100" height="100"/></svg>');
-            text-align: center;
-            padding: 0 20px;
-        }
-       
-        .hero-content {
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.2s ease 0.3s;
-        }
-       
-        .hero-content.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-       
-        .hero h1 {
-            font-size: 4.5rem;
-            color: #2a9d8f;
-            margin-bottom: 20px;
+
+        .celebration h1 {
+            font-size: 3rem;
+            color: #d40078;
+            margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-       
-        .hero p {
-            font-size: 1.8rem;
-            color: #d4af37;
-            font-weight: 300;
-            margin-bottom: 40px;
+
+        .names {
+            font-size: 2.5rem;
+            color: #ff0066;
+            margin-bottom: 50px;
+            font-weight: bold;
         }
-       
-        .scroll-down {
+
+        .hearts-container {
             position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #2a9d8f;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            opacity: 0;
-            transition: opacity 1s ease 1.5s;
-        }
-       
-        .scroll-down.active {
-            opacity: 1;
-        }
-       
-        /* About Section */
-        .about {
-            background-color: #fff;
-            position: relative;
-            transform: translateY(50px);
-            opacity: 0;
-        }
-       
-        .about.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-       
-        .about-container {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            width: 100%;
             height: 100%;
-            gap: 50px;
+            top: 0;
+            left: 0;
+            pointer-events: none;
         }
-       
-        .about-text {
-            flex: 1;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 1s ease;
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff0066;
+            animation: float 8s linear infinite;
+            opacity: 0.7;
         }
-       
-        .about-text.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-       
-        .about-text h2 {
-            font-size: 3rem;
-            color: #2a9d8f;
-            margin-bottom: 30px;
-        }
-       
-        .about-text p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #555;
-            line-height: 1.8;
-        }
-       
-        .about-images {
-            flex: 1;
-            height: 80%;
+
+        .parallax-section {
+            margin-top: 50px;
             position: relative;
+            height: 500px;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            transform: translateX(50px) scale(0.9);
-            transition: all 1s ease 0.5s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-       
-        .about-images.active {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-        }
-       
-        .about-image {
+
+        .parallax-bg {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease;
-            border-radius: 20px;
+            height: 120%;
+            background: url('https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            transition: transform 0.1s ease;
         }
-       
-        .about-image.active {
-            opacity: 1;
-        }
-       
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(to bottom, #2a9d8f, #1d7a6e);
-            color: #fff;
-            text-align: center;
-            transform: translateY(50px);
-            opacity: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-       
-        .contact.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-       
-        .contact-content {
-            max-width: 1000px;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: all 1s ease;
-            width: 100%;
-            padding: 40px 20px;
-        }
-       
-        .contact-content.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-       
-        .contact h2 {
-            font-size: 3.5rem;
-            margin-bottom: 60px;
-        }
-       
-        .contact-options {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-       
-        .contact-card {
-            background-color: #fff;
-            color: #2a9d8f;
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
             border-radius: 15px;
-            padding: 40px 30px;
-            width: 280px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-            opacity: 0;
-            transform: translateY(50px) scale(0.9);
-            transition: all 0.6s ease;
+            margin: 30px;
+            color: #d40078;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-       
-        .contact-card:nth-child(1) {
-            transition-delay: 0.2s;
-        }
-       
-        .contact-card:nth-child(2) {
-            transition-delay: 0.4s;
-        }
-       
-        .contact-card:nth-child(3) {
-            transition-delay: 0.6s;
-        }
-       
-        .contact-content.active .contact-card {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-       
-        .contact-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-       
-        .contact-icon {
-            font-size: 50px;
-            margin-bottom: 25px;
-            color: #d4af37;
-        }
-       
-        .contact-card h3 {
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-       
-        .contact-card p {
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-       
-        .btn {
-            display: inline-block;
-            background-color: #d4af37;
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid #d4af37;
-        }
-       
-        .btn:hover {
-            background-color: transparent;
-            color: #d4af37;
-        }
-       
-        /* Footer */
-        footer {
-            background-color: #1d7a6e;
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-        }
-       
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-       
-        .social-icons a {
-            color: #fff;
-            font-size: 28px;
-            margin-left: 20px;
-            transition: color 0.3s;
-        }
-       
-        .social-icons a:hover {
-            color: #d4af37;
-        }
-       
-        /* Translation transition */
-        .translatable {
-            transition: opacity 0.3s ease;
-        }
-        
-        .translating {
-            opacity: 0.5;
-        }
-       
-        /* Animations */
-        @keyframes fadeUp {
-            from {
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
-                transform: translateY(50px);
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            10% {
+                opacity: 0.7;
             }
-        }
-       
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
+            90% {
+                opacity: 0.7;
             }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
             }
         }
-       
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-           
-            .hero p {
-                font-size: 1.5rem;
-            }
-           
-            .about-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-            }
-           
-            .about-images {
-                width: 100%;
-                height: 50%;
-            }
-           
-            .about-text h2 {
-                font-size: 2.5rem;
-            }
-            
-            .contact h2 {
-                font-size: 2.8rem;
-                margin-bottom: 40px;
-            }
-            
-            nav ul li {
-                margin-left: 12px;
-            }
-            
-            .language-current {
-                padding: 6px 10px;
-                font-size: 0.9rem;
-            }
-        }
-       
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: row;
-                text-align: center;
-            }
-           
-            nav ul {
-                margin-top: 0;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-           
-            nav ul li {
-                margin: 5px 8px;
-            }
-            
-            .logo-text {
-                font-size: 22px;
-            }
-            
-            .logo-icon {
-                font-size: 28px;
-            }
-           
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-           
-            .hero p {
-                font-size: 1.3rem;
-            }
-           
-            .about-text h2 {
-                font-size: 2.2rem;
-            }
-           
-            .contact-options {
-                flex-direction: column;
-                align-items: center;
-                gap: 25px;
-            }
-           
-            .contact-card {
-                width: 100%;
-                max-width: 350px;
-                padding: 30px 20px;
-            }
-            
-            .contact-icon {
-                font-size: 40px;
-                margin-bottom: 15px;
-            }
-            
-            .contact-card h3 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .contact-card p {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-            
-            .btn {
-                padding: 12px 25px;
-                font-size: 0.9rem;
-            }
-           
-            .footer-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-           
-            .social-icons {
-                margin-top: 15px;
-            }
-           
-            .social-icons a {
-                margin: 0 10px;
-            }
-            
-            .language-dropdown {
-                left: 0;
-                right: auto;
-            }
-            
-            /* Keep navigation horizontal on mobile */
-            nav ul {
-                flex-direction: row;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 5px;
-            }
-            
-            nav ul li {
-                flex-shrink: 0;
-            }
-        }
-       
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-           
-            .hero p {
-                font-size: 1.1rem;
-            }
-           
-            .about-text h2 {
+            .message {
                 font-size: 1.8rem;
             }
-           
-            .about-text p {
-                font-size: 1rem;
-            }
-           
-            .contact h2 {
+            
+            .message-3 {
                 font-size: 2.2rem;
-                margin-bottom: 30px;
             }
             
-            .contact-card {
-                padding: 25px 15px;
+            .message-4 {
+                font-size: 2rem;
             }
             
-            nav ul {
-                font-size: 0.9rem;
+            .celebration h1 {
+                font-size: 2.2rem;
             }
             
-            nav ul li {
-                margin: 5px 5px;
-            }
-            
-            .language-selector {
-                margin-top: 0;
-            }
-            
-            .logo-text {
-                font-size: 18px;
-            }
-            
-            .logo-icon {
-                font-size: 24px;
+            .names {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-cloud-meatball"></i>
-                </div>
-                <div class="logo-text">Hung Phat</div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#hero" data-translate="nav_home">Home</a></li>
-                    <li><a href="#about" data-translate="nav_about">About</a></li>
-                    <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
-                    <li class="language-selector">
-                        <div class="language-current">
-                            <i class="fas fa-globe"></i> <span class="lang-display">EN</span>
-                        </div>
-                        <div class="language-dropdown">
-                            <a href="#" class="language-option" data-lang="en" data-display="EN">English</a>
-                            <a href="#" class="language-option" data-lang="vi" data-display="VN">Tiếng Việt</a>
-                            <a href="#" class="language-option" data-lang="zh-CN" data-display="简体">中文 (Simplified)</a>
-                            <a href="#" class="language-option" data-lang="zh-TW" data-display="繁體">中文 (Traditional)</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Initial dark overlay -->
+    <div class="initial-dark" id="initialDark"></div>
 
+    <!-- Message sequence container -->
+    <div class="container" id="messageContainer">
+        <div class="message message-1" id="message1">Hello pé iu</div>
+        <div class="message message-2" id="message2">Pé biết hôm nay là ngày gì khum?</div>
+        <div class="message message-3" id="message3">3/12 đóooooooo</div>
+        <div class="message message-4" id="message4">Happy 2 Years Anniversary<br>nka pé iu</div>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1 class="translatable" data-translate="hero_title">Durian at Our Heart</h1>
-            <p class="translatable" data-translate="hero_subtitle">Premium quality durians, carefully selected and shipped with love</p>
-        </div>
-        <a href="#about" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-    </section>
-
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-text">
-                <h2 class="translatable" data-translate="about_title">About Hung Phat</h2>
-                <p class="translatable" data-translate="about_p1">Hung Phat is a premium durian distribution company with high standards, focusing on quality over quantity. We take pride in sourcing only the finest durians from trusted growers who share our passion for excellence.</p>
-                <p class="translatable" data-translate="about_p2">Each durian is carefully selected, handled with utmost care, and shipped with love to ensure that you receive the perfect fruit every time. Our commitment to quality means we reject more durians than we accept, ensuring only the best reach our customers.</p>
-                <p class="translatable" data-translate="about_p3">We believe that enjoying a durian should be a memorable experience, which is why we pay attention to every detail from tree to table.</p>
-            </div>
-            <div class="about-images">
-                <div class="about-image active" style="background-image: url('https://images.unsplash.com/photo-1597004719510-32b8f2e1a2d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1630365500745-ecdf59c8d5b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1630365500933-2152d4f5fbf2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1597004719510-32b8f2e1a2d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+    <!-- Final celebration section -->
+    <div class="celebration" id="celebration">
+        <h1>Happy 2nd Anniversary!</h1>
+        <div class="names">Thế Zin ❤️ Ánh iu</div>
+        
+        <div class="parallax-section">
+            <div class="parallax-bg" id="parallaxBg"></div>
+            <div class="parallax-content">
+                <h2>Our Special Memories</h2>
+                <p>Two years of love, laughter, and beautiful moments together. Here's to many more years of happiness!</p>
             </div>
         </div>
-    </section>
-
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="translatable" data-translate="contact_title">Connect With Us</h2>
-                <div class="contact-options">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h3 class="translatable" data-translate="contact_call">Call Us</h3>
-                        <p class="translatable" data-translate="contact_call_desc">Speak directly with our durian experts</p>
-                        <a href="tel:+1234567890" class="btn translatable" data-translate="contact_call_btn">Call Now</a>
-                    </div>
-                   
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3 class="translatable" data-translate="contact_email">Email Us</h3>
-                        <p class="translatable" data-translate="contact_email_desc">Get detailed information and quotes</p>
-                        <a href="mailto:info@thanhphatdurian.com" class="btn translatable" data-translate="contact_email_btn">Send Email</a>
-                    </div>
-                   
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <h3 class="translatable" data-translate="contact_schedule">Schedule</h3>
-                        <p class="translatable" data-translate="contact_schedule_desc">Book a tasting session</p>
-                        <a href="#" class="btn translatable" data-translate="contact_schedule_btn">Schedule Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="copyright">
-                <p class="translatable" data-translate="footer_copyright">&copy; 2023 Thanh Phat Durian. All rights reserved.</p>
-            </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
-
+        
+        <!-- Animated hearts -->
+        <div class="hearts-container" id="heartsContainer"></div>
+    </div>
 
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-           
-            // Update body background based on scroll position
-            updateBackground();
-        });
-       
-        // Function to update body background based on scroll position
-        function updateBackground() {
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.body.scrollHeight - windowHeight;
-            const scrollPercent = scrollPosition / documentHeight;
-           
-            // Define color stops for background transition
-            const heroColor = [248, 246, 240]; // #f8f6f0
-            const aboutColor = [255, 255, 255]; // #ffffff
-            const contactColor = [42, 157, 143]; // #2a9d8f
-           
-            let r, g, b;
-           
-            if (scrollPercent < 0.5) {
-                // Transition from hero to about
-                const progress = scrollPercent * 2; // 0 to 1
-                r = heroColor[0] + (aboutColor[0] - heroColor[0]) * progress;
-                g = heroColor[1] + (aboutColor[1] - heroColor[1]) * progress;
-                b = heroColor[2] + (aboutColor[2] - heroColor[2]) * progress;
-            } else {
-                // Transition from about to contact
-                const progress = (scrollPercent - 0.5) * 2; // 0 to 1
-                r = aboutColor[0] + (contactColor[0] - aboutColor[0]) * progress;
-                g = aboutColor[1] + (contactColor[1] - aboutColor[1]) * progress;
-                b = aboutColor[2] + (contactColor[2] - aboutColor[2]) * progress;
-            }
-           
-            document.body.style.background = `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
-        }
-       
-        // Intersection Observer for scroll animations
-        const sections = document.querySelectorAll('section');
-        const heroContent = document.querySelector('.hero-content');
-        const scrollDown = document.querySelector('.scroll-down');
-        const aboutText = document.querySelector('.about-text');
-        const aboutImages = document.querySelector('.about-images');
-        const contactContent = document.querySelector('.contact-content');
-        const contactCards = document.querySelectorAll('.contact-card');
-       
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
-        };
-       
-        const observer = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.id === 'hero') {
-                        heroContent.classList.add('active');
-                        scrollDown.classList.add('active');
-                        entry.target.classList.add('active');
-                    } else if (entry.target.id === 'about') {
-                        aboutText.classList.add('active');
-                        aboutImages.classList.add('active');
-                        entry.target.classList.add('active');
-                    } else if (entry.target.id === 'contact') {
-                        contactContent.classList.add('active');
-                        entry.target.classList.add('active');
-                    }
-                } else {
-                    // Remove the class when element is not in view for reverse animation
-                    if (entry.target.id === 'hero') {
-                        heroContent.classList.remove('active');
-                        scrollDown.classList.remove('active');
-                        entry.target.classList.remove('active');
-                    } else if (entry.target.id === 'about') {
-                        aboutText.classList.remove('active');
-                        aboutImages.classList.remove('active');
-                        entry.target.classList.remove('active');
-                    } else if (entry.target.id === 'contact') {
-                        contactContent.classList.remove('active');
-                        entry.target.classList.remove('active');
-                    }
-                }
-            });
-        }, observerOptions);
-       
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-       
-        // Image playback effect for about section
-        const aboutImageElements = document.querySelectorAll('.about-image');
-        let currentImageIndex = 0;
-        let lastScrollPosition = 0;
-        let imageChangeThreshold = 150; // pixels to scroll before changing image
-       
-        function updateAboutImages(scrollPos) {
-            // Calculate which image should be shown based on scroll position
-            const aboutSection = document.getElementById('about');
-            const sectionTop = aboutSection.offsetTop;
-            const sectionHeight = aboutSection.offsetHeight;
-           
-            // Only run if we're in the about section
-            if (scrollPos >= sectionTop && scrollPos <= sectionTop + sectionHeight) {
-                const scrollProgress = (scrollPos - sectionTop) / sectionHeight;
-                const imageIndex = Math.min(aboutImageElements.length - 1, Math.floor(scrollProgress * aboutImageElements.length));
-               
-                // Only update if the index has changed
-                if (imageIndex !== currentImageIndex) {
-                    aboutImageElements[currentImageIndex].classList.remove('active');
-                    aboutImageElements[imageIndex].classList.add('active');
-                    currentImageIndex = imageIndex;
-                }
-            }
-        }
-       
-        // Throttle scroll events for better performance
-        let ticking = false;
-        window.addEventListener('scroll', function() {
-            const currentScrollPosition = window.pageYOffset;
-           
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    updateAboutImages(currentScrollPosition);
-                    ticking = false;
-                });
-               
-                ticking = true;
-            }
-           
-            lastScrollPosition = currentScrollPosition;
-        });
-       
-        // Initialize the first image as active
-        aboutImageElements[0].classList.add('active');
-       
-        // Initialize body background
-        updateBackground();
-        // Language translation functionality
-        const translations = {
-            'en': {
-                'nav_home': 'Home',
-                'nav_about': 'About',
-                'nav_contact': 'Contact',
-                'hero_title': 'Fruit at Our Heart',
-                'hero_subtitle': 'Premium quality fruits, carefully selected and shipped with love',
-                'about_title': 'About Hung Phat',
-                'about_p1': 'Hung Phat is a fruit distribution company with high standards, focusing on quality over quantity. We take pride in sourcing only the finest fruits from trusted growers who share our passion for excellence.',
-                'about_p2': 'Each fruit is carefully selected, handled with utmost care, and shipped with love to ensure that you receive the perfect product every time. Our commitment to quality means we reject more fruits than we accept, ensuring only the best reach our customers.',
-                'about_p3': 'We believe that enjoying fruit should be a memorable experience, which is why we pay attention to every detail from orchard to table.',
-                'contact_title': 'Connect With Us',
-                'contact_call': 'Call Us',
-                'contact_call_desc': 'Speak directly with our fruit experts',
-                'contact_call_btn': 'Call Now',
-                'contact_email': 'Email Us',
-                'contact_email_desc': 'Get detailed information and quotes',
-                'contact_email_btn': 'Send Email',
-                'contact_schedule': 'Schedule',
-                'contact_schedule_desc': 'Book a tasting session',
-                'contact_schedule_btn': 'Schedule Now',
-                'footer_copyright': '© 2025 Hung Phat Import and Export Fruit Company Limited. All rights reserved.'
-            },
-            'vi': {
-                'nav_home': 'Trang Chủ',
-                'nav_about': 'Giới Thiệu',
-                'nav_contact': 'Liên Hệ',
-                'hero_title': 'Tuyển chọn Trái Cây bằng cả con tim',
-                'hero_subtitle': 'Trái cây chất lượng cao, được chọn lọc kỹ lưỡng và vận chuyển bằng cả tấm lòng',
-                'about_title': 'Về Hưng Phát',
-                'about_p1': 'Hưng Phát là doanh nghiệp phân phối trái cây với tiêu chuẩn cao, tập trung vào chất lượng hơn số lượng. Chúng tôi tự hào chỉ chọn những trái cây tốt nhất từ những nhà vườn đáng tin cậy cùng chung đam mê về sự xuất sắc.',
-                'about_p2': 'Mỗi loại trái cây đều được chọn lọc cẩn thận, xử lý với sự chăm sóc tối đa và vận chuyển bằng cả tấm lòng để đảm bảo bạn nhận được sản phẩm hoàn hảo mỗi lần. Cam kết về chất lượng của chúng tôi có nghĩa là chúng tôi từ chối nhiều hơn là chấp nhận, đảm bảo chỉ những loại tốt nhất đến tay khách hàng.',
-                'about_p3': 'Chúng tôi tin rằng thưởng thức trái cây nên là một trải nghiệm đáng nhớ, đó là lý do chúng tôi chú ý đến từng chi tiết từ vườn cây đến bàn ăn.',
-                'contact_title': 'Kết Nối Với Chúng Tôi',
-                'contact_call': 'Gọi Cho Chúng Tôi',
-                'contact_call_desc': 'Nói chuyện trực tiếp với các chuyên gia trái cây của chúng tôi',
-                'contact_call_btn': 'Gọi Ngay',
-                'contact_email': 'Email Cho Chúng Tôi',
-                'contact_email_desc': 'Nhận thông tin chi tiết và báo giá',
-                'contact_email_btn': 'Gửi Email',
-                'contact_schedule': 'Lịch Hẹn',
-                'contact_schedule_desc': 'Đặt lịch nếm thử',
-                'contact_schedule_btn': 'Đặt Lịch Ngay',
-                'footer_copyright': '© 2025 Công Ty TNHH Xuất Nhập Khẩu Trái Cây Hưng Phát. Tất cả quyền được bảo lưu.'
-            },
-            'zh-CN': {
-                'nav_home': '首页',
-                'nav_about': '关于我们',
-                'nav_contact': '联系我们',
-                'hero_title': '用心做好水果',
-                'hero_subtitle': '优质水果，精挑细选，用心运送',
-                'about_title': '关于兴发',
-                'about_p1': '兴发是一家高标准的水果分销企业，注重质量而非数量。我们自豪地从值得信赖的种植者那里采购最好的水果，他们与我们分享对卓越的热情。',
-                'about_p2': '每个水果都经过精心挑选，以最大的关怀处理，并充满爱心地运送，确保您每次都能收到完美的产品。我们对质量的承诺意味着我们拒绝的水果比接受的更多，确保只有最好的水果才能到达客户手中。',
-                'about_p3': '我们相信享受水果应该是一种难忘的体验，这就是为什么我们关注从果园到餐桌的每一个细节。',
-                'contact_title': '联系我们',
-                'contact_call': '致电我们',
-                'contact_call_desc': '直接与我们的水果专家交谈',
-                'contact_call_btn': '立即致电',
-                'contact_email': '发送邮件',
-                'contact_email_desc': '获取详细信息和报价',
-                'contact_email_btn': '发送邮件',
-                'contact_schedule': '预约',
-                'contact_schedule_desc': '安排品尝会',
-                'contact_schedule_btn': '立即预约',
-                'footer_copyright': '© 2025 兴发进出口水果有限公司。保留所有权利。'
-            },
-            'zh-TW': {
-                'nav_home': '首頁',
-                'nav_about': '關於我們',
-                'nav_contact': '聯繫我們',
-                'hero_title': '用心做好水果',
-                'hero_subtitle': '優質水果，精挑細選，用心運送',
-                'about_title': '關於興發',
-                'about_p1': '興發是一家高標準的水果分銷企業，注重質量而非數量。我們自豪地從值得信賴的種植者那裡採購最好的水果，他們與我們分享對卓越的熱情。',
-                'about_p2': '每個水果都經過精心挑選，以最大的關懷處理，並充滿愛心地運送，確保您每次都能收到完美的產品。我們對質量的承諾意味著我們拒絕的水果比接受的更多，確保只有最好的水果才能到達客戶手中。',
-                'about_p3': '我們相信享受水果應該是一種難忘的體驗，這就是為什麼我們關注從果園到餐桌的每一個細節。',
-                'contact_title': '聯繫我們',
-                'contact_call': '致電我們',
-                'contact_call_desc': '直接與我們的水果專家交談',
-                'contact_call_btn': '立即致電',
-                'contact_email': '發送郵件',
-                'contact_email_desc': '獲取詳細信息和報價',
-                'contact_email_btn': '發送郵件',
-                'contact_schedule': '預約',
-                'contact_schedule_desc': '安排品嚐會',
-                'contact_schedule_btn': '立即預約',
-                'footer_copyright': '© 2025 興發進出口水果有限公司。保留所有權利。'
-            }
-        };
-
-
-        let currentLanguage = 'en';
-        
-        // Language selector functionality
-        document.querySelectorAll('.language-option').forEach(option => {
-            option.addEventListener('click', function(e) {
-                e.preventDefault();
-                const lang = this.getAttribute('data-lang');
-                const displayText = this.getAttribute('data-display');
-                
-                // Update the current language display
-                document.querySelector('.lang-display').textContent = displayText;
-                
-                // Change language with smooth transition
-                changeLanguage(lang);
-            });
-        });
-        
-        // Function to change language with smooth transition
-        function changeLanguage(lang) {
-            // Add translating class for transition effect
-            const translatableElements = document.querySelectorAll('.translatable');
-            translatableElements.forEach(el => {
-                el.classList.add('translating');
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialDark = document.getElementById('initialDark');
+            const message1 = document.getElementById('message1');
+            const message2 = document.getElementById('message2');
+            const message3 = document.getElementById('message3');
+            const message4 = document.getElementById('message4');
+            const celebration = document.getElementById('celebration');
+            const heartsContainer = document.getElementById('heartsContainer');
+            const parallaxBg = document.getElementById('parallaxBg');
             
-            // Change language after a short delay for transition effect
+            // Gradually brighten the background
             setTimeout(() => {
-                currentLanguage = lang;
+                document.body.style.backgroundColor = '#ffcce6';
+                initialDark.style.opacity = '0';
                 
-                // Update all translatable elements
-                translatableElements.forEach(el => {
-                    const key = el.getAttribute('data-translate');
-                    if (translations[lang] && translations[lang][key]) {
-                        el.textContent = translations[lang][key];
-                    }
-                });
-                
-                // Remove translating class after content is updated
-                setTimeout(() => {
-                    translatableElements.forEach(el => {
-                        el.classList.remove('translating');
-                    });
-                }, 50);
-                
-            }, 300);
-        }
-        
-        // Mobile language dropdown toggle
-        if (window.innerWidth < 768) {
-            document.querySelector('.language-current').addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const dropdown = document.querySelector('.language-dropdown');
-                if (dropdown.style.display === 'block') {
-                    dropdown.style.display = 'none';
-                } else {
-                    dropdown.style.display = 'block';
-                }
-            });
+                // Start message sequence after background brightens
+                setTimeout(showMessage1, 1000);
+            }, 500);
             
-            // Close dropdown when clicking elsewhere
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.language-selector')) {
-                    document.querySelector('.language-dropdown').style.display = 'none';
+            function showMessage1() {
+                message1.style.opacity = '1';
+                setTimeout(() => {
+                    message1.style.opacity = '0';
+                    setTimeout(showMessage2, 1000);
+                }, 3000);
+            }
+            
+            function showMessage2() {
+                message2.style.opacity = '1';
+                setTimeout(() => {
+                    message2.style.opacity = '0';
+                    setTimeout(showMessage3, 1000);
+                }, 4000);
+            }
+            
+            function showMessage3() {
+                message3.style.opacity = '1';
+                setTimeout(() => {
+                    message3.style.opacity = '0';
+                    setTimeout(showMessage4, 1000);
+                }, 3000);
+            }
+            
+            function showMessage4() {
+                message4.style.opacity = '1';
+                setTimeout(() => {
+                    message4.style.opacity = '0';
+                    setTimeout(showCelebration, 1000);
+                }, 4000);
+            }
+            
+            function showCelebration() {
+                document.getElementById('messageContainer').style.display = 'none';
+                celebration.style.display = 'block';
+                
+                // Create floating hearts
+                createHearts();
+            }
+            
+            function createHearts() {
+                const heartEmojis = ['❤️', '💖', '💕', '💗', '💓', '💞', '💘'];
+                
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.className = 'heart';
+                        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                        heart.style.left = Math.random() * 100 + 'vw';
+                        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                        heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                        heartsContainer.appendChild(heart);
+                        
+                        // Remove heart after animation completes
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 10000);
+                    }, i * 300);
                 }
+                
+                // Continue creating hearts
+                setInterval(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    heartsContainer.appendChild(heart);
+                    
+                    // Remove heart after animation completes
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 10000);
+                }, 500);
+            }
+            
+            // Parallax effect
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                parallaxBg.style.transform = 'translateY(' + rate + 'px)';
             });
-        }
+        });
     </script>
 </body>
 </html>
