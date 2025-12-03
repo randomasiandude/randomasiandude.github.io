@@ -22,7 +22,6 @@
             position: relative;
         }
 
-        /* Floating clouds background */
         .clouds {
             position: fixed;
             top: 0;
@@ -59,7 +58,6 @@
             z-index: 2;
         }
 
-        /* Initial dark state */
         .initial-dark {
             position: fixed;
             top: 0;
@@ -71,7 +69,6 @@
             transition: opacity 3s ease;
         }
 
-        /* Sparkle effect */
         .sparkle {
             position: fixed;
             width: 4px;
@@ -97,7 +94,6 @@
             }
         }
 
-        /* Message styling */
         .message {
             position: absolute;
             opacity: 0;
@@ -114,7 +110,7 @@
         }
 
         .message-1 {
-            color: #ffb6c1;
+            color: #ff69b4;
         }
 
         .message-2 {
@@ -133,13 +129,16 @@
             line-height: 1.4;
         }
 
-        /* Final celebration section */
         .celebration {
             display: none;
             width: 100%;
             min-height: 100vh;
             background: linear-gradient(135deg, #ffd1e8 0%, #ffb3d9 25%, #ff99cc 50%, #ffb3d9 75%, #ffd1e8 100%);
             background-size: 400% 400%;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
             animation: gradient-shift 15s ease infinite;
             padding: 40px 20px;
             position: relative;
@@ -159,6 +158,8 @@
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
             font-weight: 700;
             animation: bounce-title 2s ease-in-out infinite;
+            text-align: center;
+            width: 100%;
         }
 
         @keyframes bounce-title {
@@ -171,9 +172,10 @@
             color: #ff0066;
             margin-bottom: 30px;
             font-weight: 600;
+            text-align: center;
+            width: 100%;
         }
 
-        /* Chiikawa characters container */
         .chiikawa-characters {
             display: flex;
             justify-content: center;
@@ -228,113 +230,6 @@
             filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.5));
         }
 
-        /* Memory cards */
-        .memory-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .memory-card {
-            background: white;
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .memory-card:hover {
-            transform: translateY(-10px) rotate(2deg);
-            box-shadow: 0 20px 45px rgba(255, 105, 180, 0.4);
-        }
-
-        .memory-card h3 {
-            color: #ff0066;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .memory-card p {
-            color: #666;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .memory-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .parallax-section {
-            margin-top: 50px;
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 30px;
-            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120%;
-            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.3)), 
-                        url('https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            transition: transform 0.1s ease;
-        }
-
-        .parallax-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 35px;
-            border-radius: 20px;
-            margin: 30px;
-            color: #d40078;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .parallax-content h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .parallax-content p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Love message banner */
         .love-banner {
             background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
             background-size: 200% 100%;
@@ -354,7 +249,173 @@
             100% { background-position: 200% 50%; }
         }
 
-        /* Responsive adjustments */
+        .letter-section {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .letter-container {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50px;
+            right: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff69b4, transparent);
+        }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #ffb6c1;
+        }
+        
+        .letter-header h2 {
+            color: #ff0066;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .letter-date {
+            color: #ff69b4;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .letter-content {
+            line-height: 1.8;
+        }
+        
+        .letter-text p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #555;
+            text-align: justify;
+        }
+        
+        .letter-opening {
+            font-size: 1.4rem !important;
+            color: #ff1493 !important;
+            font-weight: 600;
+        }
+        
+        .letter-closing {
+            text-align: right;
+            font-size: 1.4rem !important;
+            color: #ff1493 !important;
+            font-weight: 600;
+            margin-top: 30px !important;
+        }
+        
+        .photo-gallery {
+            margin: 50px 0;
+            padding: 30px;
+            background: #fff9fc;
+            border-radius: 20px;
+            border: 2px dashed #ffb6c1;
+        }
+        
+        .photo-gallery h3 {
+            text-align: center;
+            color: #ff0066;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .photo-frame {
+            perspective: 1000px;
+        }
+        
+        .photo-placeholder {
+            background: linear-gradient(135deg, #ffd1e8, #ffb3d9);
+            height: 200px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+        }
+        
+        .photo-placeholder:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+        }
+        
+        .photo-placeholder span {
+            color: #ff0066;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .photo-preview {
+            color: #ff69b4;
+            font-size: 0.9rem;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+        
+        .photo-caption {
+            text-align: center;
+            margin-top: 10px;
+            color: #ff1493;
+            font-weight: 500;
+        }
+        
+        
+        .letter-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed #ffb6c1;
+        }
+        
+        .letter-footer p {
+            color: #ff0066;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         @media (max-width: 768px) {
             .message {
                 font-size: 1.8rem;
@@ -382,12 +443,46 @@
                 font-size: 3rem;
             }
 
-            .memory-cards {
+            .letter-container {
+                padding: 25px;
+            }
+            
+            .letter-header h2 {
+                font-size: 2rem;
+            }
+            
+            .letter-text p {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
-
-            .parallax-section {
-                height: 300px;
+            
+            .photo-placeholder {
+                height: 180px;
+            }
+            
+            .photo-gallery {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .letter-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .letter-date {
+                font-size: 1rem;
+            }
+            
+            .letter-text p {
+                font-size: 1rem;
+            }
+            
+            .photo-placeholder {
+                height: 150px;
             }
         }
     </style>
@@ -420,33 +515,76 @@
         </div>
 
         <div class="love-banner">
-            ✨ 2 Years of Love, Laughter & Happiness ✨
+            ✨ 2 Năm Yêu Thương, Tiếng Cười & Hạnh Phúc ✨
         </div>
 
-        <!-- Memory cards -->
-        <div class="memory-cards">
-            <div class="memory-card">
-                <div class="memory-icon">💕</div>
-                <h3>First Meeting</h3>
-                <p>The day our beautiful journey began together</p>
-            </div>
-            <div class="memory-card">
-                <div class="memory-icon">🌸</div>
-                <h3>Sweet Moments</h3>
-                <p>Every laugh, every smile, every precious memory</p>
-            </div>
-            <div class="memory-card">
-                <div class="memory-icon">🌟</div>
-                <h3>Growing Together</h3>
-                <p>Two years of growing stronger side by side</p>
-            </div>
-        </div>
-        
-        <div class="parallax-section">
-            <div class="parallax-bg" id="parallaxBg"></div>
-            <div class="parallax-content">
-                <h2>✨ Our Special Memories ✨</h2>
-                <p>Two years of love, laughter, and beautiful moments together. Here's to many more years of happiness, adventures, and making wonderful memories! 💖</p>
+        <!-- Letter Section -->
+        <div class="letter-section">
+            <div class="letter-container">
+                <div class="letter-header">
+                    <h2>💌 Thư Gửi Em 💌</h2>
+                    <p class="letter-date">Ngày 3 tháng 12, 2025</p>
+                </div>
+                
+                <div class="letter-content">
+                    <div class="letter-text">
+                        <p class="letter-opening">Chào péeee,</p>
+                        
+                        <p>Hôm nay tròn 2 năm tụi mình ở bên nhau á. Thời gian trôi qua nhanh thật nhỉ, nhưng mỗi khoảnh khắc bên em đều là những kỷ niệm đẹp nhất trong cuộc đời anh.</p>
+                        
+                        <p>Anh nhớ ngày đầu tiên gặp em, nhớ từng nụ cười, từng lời nói, nhớ cả những lúc chúng ta cãi vã rồi làm lành. Tất cả đều trở thành một phần không thể thiếu trong trái tim anh.</p>
+                        
+                        <p>2 năm qua, chúng ta đã cùng nhau trải qua bao nhiêu điều. Có niềm vui, có nỗi buồn, có những thử thách và cả những thành công nhỏ. Nhưng điều quan trọng nhất là chúng ta luôn có nhau.</p>
+                        
+                        <p>Em là người khiến anh muốn trở thành phiên bản tốt nhất của chính mình. Cảm ơn em vì đã luôn ở bên, cảm ơn em vì tất cả.</p>
+                        
+                        <p class="letter-closing">Yêu em nhiều,<br>Vin của em</p>
+                    </div>
+                    
+                    <!-- Photo gallery -->
+                    <div class="photo-gallery">
+                        <h3>📸 Những Khoảnh Khắc Đẹp 📸</h3>
+                        <div class="gallery-grid">
+                            <div class="photo-frame">
+                                <div class="photo-placeholder">
+                                    <span>Hình ảnh của chúng ta</span>
+                                    
+                                    <img src="pic_1.png" alt="Kỷ niệm 1" style="width:100%; height:100%; object-fit:cover; border-radius:15px; object-position: 50% 20%;">
+                                </div>
+                                <p class="photo-caption">Ngày đầu tiên gặp nhau</p>
+                            </div>
+                            
+                            <div class="photo-frame">
+                                <div class="photo-placeholder">
+                                    <span>Hình ảnh của chúng ta</span>
+                                    <img src="pic_2.png" alt="Kỷ niệm 1" style="width:100%; height:100%; object-fit:cover; border-radius:15px; object-position: 50% 80%;">
+                                </div>
+                                <p class="photo-caption">Kỷ niệm 1 năm</p>
+                            </div>
+                            
+                            <div class="photo-frame">
+                                <div class="photo-placeholder">
+                                    <span>Hình ảnh của chúng ta</span>
+                                    <img src="pic_3.png" alt="Kỷ niệm 1" style="width:100%; height:100%; object-fit:cover; border-radius:15px; object-position: 50% 20%;">
+                                </div>
+                                <p class="photo-caption">Những chuyến đi cùng nhau</p>
+                            </div>
+                            
+                            <div class="photo-frame">
+                                <div class="photo-placeholder">
+                                    <span>Hình ảnh của chúng ta</span>
+                                    <img src="pic_4.png" alt="Kỷ niệm 1" style="width:100%; height:100%; object-fit:cover; border-radius:15px; object-position: 50% 80%;">
+                                </div>
+                                <p class="photo-caption">Khoảnh khắc hạnh phúc</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="letter-footer">
+                    <p>Mãi mãi yêu em ❤️</p>
+                </div>
             </div>
         </div>
         
@@ -463,7 +601,6 @@
             const message4 = document.getElementById('message4');
             const celebration = document.getElementById('celebration');
             const heartsContainer = document.getElementById('heartsContainer');
-            const parallaxBg = document.getElementById('parallaxBg');
             const clouds = document.getElementById('clouds');
             
             // Create clouds
@@ -560,8 +697,18 @@
                     }, index * 200);
                 });
                 
-                // Create floating hearts
                 createHearts();
+                
+                const photoFrames = document.querySelectorAll('.photo-frame');
+                photoFrames.forEach(frame => {
+                    frame.addEventListener('mouseenter', () => {
+                        const rect = frame.getBoundingClientRect();
+                        createSparkle(
+                            rect.left + rect.width / 2,
+                            rect.top + rect.height / 2
+                        );
+                    });
+                });
             }
             
             function createHearts() {
@@ -600,24 +747,6 @@
                     }, 10000);
                 }, 500);
             }
-            
-            // Parallax effect
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.5;
-                parallaxBg.style.transform = 'translateY(' + rate + 'px)';
-            });
-
-            // Add hover effect to memory cards
-            const memoryCards = document.querySelectorAll('.memory-card');
-            memoryCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    createSparkle(
-                        card.offsetLeft + card.offsetWidth / 2,
-                        card.offsetTop + card.offsetHeight / 2
-                    );
-                });
-            });
         });
     </script>
 </body>
